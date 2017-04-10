@@ -1,3 +1,5 @@
+import { FlightSearchModule } from './flight-search/flight-search.module';
+import { CityPipe } from './shared/pipes/city.pipe';
 import { FlightService } from './flight-search/flight.service';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -7,14 +9,15 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent, 
-    FlightSearchComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    FlightSearchModule
+  ],
+  declarations: [
+    // Shell
+    AppComponent
   ],
   providers: [
     // { provide: FlightService, useClass: FlightService }
