@@ -1,0 +1,35 @@
+ 
+<h1>Search a Flight</h1>
+
+<div class="form-group">
+    <label>From:</label>
+    <input [(ngModel)]="from" class="form-control">
+</div>    
+
+<div class="form-group">
+    <label>To:</label>
+    <input [(ngModel)]="to" class="form-control">
+</div>    
+
+<div class="form-group">
+    <button (click)="search()" class="btn btn-default">
+        Search
+    </button>
+</div>   
+<!--
+[ngClass]="{ 'active': f == selectedFlight }"
+-->
+<table class="table table-striped">
+    <tr *ngFor="let f of flights" [ngStyle]="{ 'background-color': (f == selectedFlight) ? 'orange' : ''  }">
+        <td>{{f.id}}</td>
+        <td>{{f.from}}</td>
+        <td>{{f.to}}</td>
+        <td>{{f.date | date:'dd.MM.yyyy HH:mm'}}</td>
+        <td><a (click)="select(f)">Auswählen</a></td>
+    </tr>
+</table> 
+
+<pre>Warenkorb
+--------------------
+{{ selectedFlight | json }}    
+</pre>
