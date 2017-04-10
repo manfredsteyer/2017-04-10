@@ -1,3 +1,4 @@
+import { FlightService } from './flight-search/flight.service';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,10 @@ import { AppComponent } from './app.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    // { provide: FlightService, useClass: FlightService }
+    // FlightService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
