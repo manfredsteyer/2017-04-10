@@ -3,12 +3,12 @@
 
 <div class="form-group">
     <label>From:</label>
-    <input [(ngModel)]="from" class="form-control">
+    <input name="from" [(ngModel)]="from" class="form-control">
 </div>    
 
 <div class="form-group">
     <label>To:</label>
-    <input [(ngModel)]="to" class="form-control">
+    <input name="to" [(ngModel)]="to" class="form-control">
 </div>    
 
 <div class="form-group">
@@ -19,6 +19,7 @@
 <!--
 [ngClass]="{ 'active': f == selectedFlight }"
 -->
+<!--
 <table class="table table-striped">
     <tr *ngFor="let f of flights" [ngStyle]="{ 'background-color': (f == selectedFlight) ? 'orange' : ''  }">
         <td>{{f.id}}</td>
@@ -28,8 +29,19 @@
         <td><a (click)="select(f)">Auswählen</a></td>
     </tr>
 </table> 
+-->
 
+<div class="row">
+<div *ngFor="let f of flights" style="margin-bottom: 20px;" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <flight-card 
+        [item]="f" 
+        [(selected)]="basket[f.id]">
+    </flight-card>
+</div>
+</div>
+<div class="row">
 <pre>Warenkorb
 --------------------
-{{ selectedFlight | json }}    
+{{ basket | json }}    
 </pre>
+</div>

@@ -13,7 +13,12 @@ export class FlightSearchComponent {
     from: string;
     to: string;
     flights: Array<Flight> = [];
-    
+    basket = {
+        "3": true,
+        "4": false,
+        "5": true
+    }
+
     selectedFlight: Flight;
 
     constructor(private flightService: FlightService) {
