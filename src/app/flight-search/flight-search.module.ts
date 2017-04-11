@@ -22,7 +22,7 @@ import { NgModule } from '@angular/core';
         FlightEditComponent,
         PassengerSearchComponent
     ],
-    providers: [/* FlightService */],
+    providers: [FlightService],
     exports: [FlightSearchComponent],
 })
 export class FlightSearchModule { }

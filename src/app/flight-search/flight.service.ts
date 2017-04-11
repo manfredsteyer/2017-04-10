@@ -10,9 +10,11 @@ export class FlightService {
         console.debug('Service ctor');
     }
 
+    flights: Flight[] = [];
+
     // Flight[] == Array<Flight>
 
-    find(from: string, to: string): Observable<Flight[]> {
+    find(from: string, to: string): void {
         
         let url = 'http://www.angular.at/api/flight';
 
@@ -23,10 +25,19 @@ export class FlightService {
         let headers = new Headers();
         headers.set('Accept', 'application/json');
 
-        return this
+        this
                 .http
                 .get(url, { search, headers  })
-                .map(resp => resp.json());
+                .map(resp => resp.json())
+                .subscribe(
+                    flights => {
+                        this.flights = flights;
+                    },
+                    err => {
+                        console.error('Fehler beim Laden', err);
+                    }
+
+                );
     }
 
 }

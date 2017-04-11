@@ -6,17 +6,23 @@ import { Http, URLSearchParams, Headers } from "@angular/http";
 @Component({
     selector: 'flight-search',
     templateUrl: './flight-search.component.html',
-    providers: [FlightService]
+    // providers: [FlightService]
 })
 export class FlightSearchComponent {
 
     from: string;
     to: string;
-    flights: Array<Flight> = [];
+    
+    //flights: Array<Flight> = [];
+
     basket = {
         "3": true,
         "4": false,
         "5": true
+    }
+
+    get flights() {  // let f = comp.flights;
+        return this.flightService.flights;
     }
 
     selectedFlight: Flight;
@@ -33,17 +39,8 @@ export class FlightSearchComponent {
 
         return new Promise<Flight[]>((resolve: Function, reject: Function) => {
             this.flightService
-                .find(this.from, this.to)
-                .subscribe(
-                    (flights: Flight[]) => {
-                        this.flights = flights;
-                        resolve(this.flights);
-                    },
-                    (err) => {
-                        console.debug('Fehler', err);
-                        reject(err);
-                    }
-                );
+                .find(this.from, this.to);
+               
         });
 
 
