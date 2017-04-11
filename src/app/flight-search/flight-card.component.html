@@ -8,5 +8,9 @@
     <p>
        <button *ngIf="!selected" class="btn btn-default" (click)="select()">Auswählen</button>
        <button *ngIf="selected" class="btn btn-default" (click)="deselect()">Entfernen</button>   
+       <a class="btn btn-default" [routerLink]="['../flight-edit', item.id, {showDetails: true, expertMode: true}]">
+            Edit
+       </a>
+    
     </p>
 </div>

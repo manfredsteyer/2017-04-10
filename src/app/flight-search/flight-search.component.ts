@@ -25,18 +25,27 @@ export class FlightSearchComponent {
         console.debug('component');
     }
 
-    search(): void {
+    search(): Promise<Flight[]> {
         
-        this.flightService
-            .find(this.from, this.to)
-            .subscribe(
-                (flights: Flight[]) => {
-                    this.flights = flights;
-                },
-                (err) => {
-                    console.debug('Fehler', err);
-                }
-            )
+        if (!this.from || !this.to ) {
+            return Promise.reject('from and to needed!');
+        }
+
+        return new Promise<Flight[]>((resolve: Function, reject: Function) => {
+            this.flightService
+                .find(this.from, this.to)
+                .subscribe(
+                    (flights: Flight[]) => {
+                        this.flights = flights;
+                        resolve(this.flights);
+                    },
+                    (err) => {
+                        console.debug('Fehler', err);
+                        reject(err);
+                    }
+                );
+        });
+
 
     }
 

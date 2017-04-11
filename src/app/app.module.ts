@@ -1,3 +1,5 @@
+import { HomeComponent } from './home/home.component';
+import { AppRouterModule } from './app.routes';
 import { FlightSearchModule } from './flight-search/flight-search.module';
 import { CityPipe } from './shared/pipes/city.pipe';
 import { FlightService } from './flight-search/flight.service';
@@ -13,11 +15,13 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    FlightSearchModule
+    FlightSearchModule,
+    AppRouterModule
   ],
   declarations: [
     // Shell
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   providers: [
     // { provide: FlightService, useClass: FlightService }

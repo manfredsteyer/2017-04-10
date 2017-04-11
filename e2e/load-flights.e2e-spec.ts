@@ -13,8 +13,8 @@ describe("FlugApp", function() {
 
         let vonFilter = element(by.name("from"));
         let nachFilter = element(by.name("to"));
-        let suchen = element(by.css("button")); // <input type="button"
-                                                // <button>
+        let suchen = element(by.css("button")); // <button>
+                                                
 
         vonFilter.clear();
         nachFilter.clear();
